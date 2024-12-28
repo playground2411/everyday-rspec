@@ -11,3 +11,14 @@
    - http://localhost:3001
    - 上記にアクセスできるはずですが、人によっては異なるかもしれません。
    - とりあえず、3001番ポートでアクセスできるはずです。
+
+
+## メモ
+- [サンプルコード](https://github.com/everydayrails/everydayrails-rspec-2017)
+
+## 実行したコマンド
+```bash
+bundle install
+rails g rspec:install
+bundle exec rspec
+```
