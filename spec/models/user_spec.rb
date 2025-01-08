@@ -6,4 +6,10 @@ RSpec.describe User, type: :model do
     user = User.new(name: "Alice")
     expect(user).to be_valid
   end
+  it "nameがなければ無効" do
+    user = User.new(name: nil)
+    user.valid?
+    expect(user).to be_invalid
+    expect(user.errors[:name]).to include("can't be blank")
+  end
 end
