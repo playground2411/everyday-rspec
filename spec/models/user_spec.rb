@@ -27,4 +27,29 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:mail]).to include("is too short (minimum is 3 characters)")
   end
+
+  describe "#user_info_in_oneline" do
+    it "メールアドレスと名前を連結させてくれる" do
+      user = User.new(name: "Alice", mail: "hello@gmail.com")
+      expect(user.user_info_in_oneline).to eq("Alice - hello@gmail.com")
+    end
+    context "nameがnilの場合" do
+      it "mailだけ返してくれる" do
+        user = User.new(name: nil, mail: "hello@gmail.com")
+        expect(user.user_info_in_oneline).to eq("hello@gmail.com")
+      end
+    end
+    context "mailがnilの場合" do
+      it "nameだけ返してくれる" do
+        user = User.new(name: "alice", mail: nil)
+        expect(user.user_info_in_oneline).to eq("alice")
+      end
+    end
+    context "name,mailがnilの場合" do
+      it "falseを返却" do
+        user = User.new(name: nil, mail: nil)
+        expect(user.user_info_in_oneline).to eq(false)
+      end
+    end
+  end
 end
