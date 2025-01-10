@@ -22,4 +22,9 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:mail]).to include("has already been taken")
   end
+  it "mailが3文字以下であれば無効" do
+    user = User.new(name: "alice", mail: "12")
+    user.valid?
+    expect(user.errors[:mail]).to include("is too short (minimum is 3 characters)")
+  end
 end
