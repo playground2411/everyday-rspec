@@ -20,8 +20,8 @@ RUN mkdir sample
 
 # アプリケーションディレクトリを作業用ディレクトリに設定
 WORKDIR /sample
-ADD Gemfile ./Gemfile
-ADD Gemfile.lock ./Gemfile.lock
+ADD submodule/Gemfile ./Gemfile
+ADD submodule/Gemfile.lock ./Gemfile.lock
 RUN bundle install
-ADD . .
+ADD ./submodule .
 EXPOSE 3000
