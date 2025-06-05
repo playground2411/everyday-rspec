@@ -1,3 +1,0 @@
-[submodule "submodule"]
-	path = submodule
-	url = git@github.com:JunichiIto/everydayrails-rspec-jp-2024.git
